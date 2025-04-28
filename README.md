@@ -1,24 +1,5 @@
-# hello-world
+# show-svg-map
 
-## Project setup
-```
-yarn install
-```
+## 说明
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+这个 demo 是展示 svg 图片在地图中展示的案例, 支持多层级的下钻
