@@ -147,16 +147,13 @@ export const getFilterFc = (arrs, mapCode, mapNode) => {
 
   return filteredArr
 }
-
 /**
  * 地图导入用小写 json 格式 geoJson 报错
  * 获取地图文件路径 暂时不管理文件 直接放根路径
  */
-function getMapPath(mapCode, leve) {
-  const basePath = '/mapJson'
-  let path = null
-  path = `${basePath}/${mapCode}.json`
-  return path
+function getMapPath(mapCode) {
+  const basePath = 'http://114.55.91.77:9880/mapJson' // 移除多余的斜杠
+  return `${basePath}/${mapCode}.json`
 }
 
 // 获取地图json数据 返回成功或者失败
@@ -164,14 +161,28 @@ export async function getGeoJournal(mapCode) {
   let usaJson = null
   try {
     const path = getMapPath(mapCode)
-    const json = await axios.get(`${path}`)
-    usaJson = json.data
+    const response = await fetch(path, {
+      method: 'GET',
+      mode: 'cors', // 确保跨域请求
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`)
+    }
+
+    usaJson = await response.json()
   } catch (error) {
+    console.error('Fetch error:', error)
     usaJson = null
   }
+
   if (!usaJson) {
-    // this.$message.warning(`该地区暂未接入，行政编号：${mapCode}`)
+    // this.$message.warning(`该地区暂未接入，行政编号：${mapCode}`);
   }
+
   return usaJson
 }
 
