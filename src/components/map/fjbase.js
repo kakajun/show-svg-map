@@ -154,7 +154,7 @@ export const getFilterFc = (arrs, mapCode, mapNode) => {
  */
 function getMapPath(mapCode, leve) {
   const basePath =
-    process.env.NODE_EN == 'development' ? '/mapJson' : '/show-svg-map/mapJson'
+    process.env.NODE_ENV == 'development' ? '/mapJson' : '/show-svg-map/mapJson'
   let path = null
   path = `${basePath}/${mapCode}.json`
   return path
