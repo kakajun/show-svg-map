@@ -153,10 +153,7 @@ export const getFilterFc = (arrs, mapCode, mapNode) => {
  * 获取地图文件路径 暂时不管理文件 直接放根路径
  */
 function getMapPath(mapCode, leve) {
-  const basePath =
-    process.env.NODE_EN == 'development'
-      ? '/mapJson'
-      : 'https://cors-anywhere.herokuapp.com/http://114.55.91.77:9880/mapJson'
+  const basePath = '/mapJson'
   let path = null
   path = `${basePath}/${mapCode}.json`
   return path
