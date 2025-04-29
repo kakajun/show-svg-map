@@ -153,7 +153,8 @@ export const getFilterFc = (arrs, mapCode, mapNode) => {
  * 获取地图文件路径 暂时不管理文件 直接放根路径
  */
 function getMapPath(mapCode, leve) {
-  const basePath = '/mapJson'
+  const basePath =
+    process.env.NODE_EN == 'development' ? '/mapJson' : '/show-svg-map/mapJson'
   let path = null
   path = `${basePath}/${mapCode}.json`
   return path
